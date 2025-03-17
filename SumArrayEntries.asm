@@ -27,7 +27,7 @@ A=D+M      // Compute memory address of A[i]
 
 D=M       // Load A[i] value
 @R2
-M=M+D     // sum += A[i]
+M=D+M     // sum += A[i]
 
 @R3
 M=M+1     // index++
