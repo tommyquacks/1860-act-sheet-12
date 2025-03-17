@@ -1,5 +1,5 @@
 // SumArrayEntries.asm
-// Computes the sum of array elements
+// Computes the sum of an array of n elements
 
 @R1
 D=M
@@ -23,9 +23,11 @@ D;JGE       // If index >= n, exit loop
 D=M        // Load base address of the array
 @R3
 A=D+M      // Compute address of A[i]
-D=M        // Load A[i] value
+D=M        // Load value from A[i]
+
 @R2
-M=M+D      // sum += A[i]  <-- **Fixed this line**
+D=D+M      // ✅ FIXED: First, do D = D + M
+M=D        // ✅ Then, store D back in M (sum += A[i])
 
 @R3
 M=M+1      // index++
