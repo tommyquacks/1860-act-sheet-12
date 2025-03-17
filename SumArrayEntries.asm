@@ -24,10 +24,9 @@ D;JGE       // If index >= n, exit loop
 D=M        // Base address of array
 @R3
 A=D+M      // Compute memory address of A[i]
-
 D=M       // Load A[i] value
 @R2
-M=D+M     // sum += A[i]
+M=M+D     // sum += A[i]
 
 @R3
 M=M+1     // index++
