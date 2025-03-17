@@ -1,5 +1,5 @@
 // SumArrayEntries.asm
-// Computes the sum of an array of n elements
+// Computes the sum of array elements
 
 @R1
 D=M
@@ -8,9 +8,8 @@ D;JLE       // If n <= 0, return 0
 
 @R2
 M=0         // Initialize sum = 0
-
 @R3
-M=0         // Index = 0
+M=0         // Initialize index = 0
 
 (LOOP)
 @R3
@@ -24,10 +23,9 @@ D;JGE       // If index >= n, exit loop
 D=M        // Load base address of the array
 @R3
 A=D+M      // Compute address of A[i]
-D=M        // Load value at A[i]
-
+D=M        // Load A[i] value
 @R2
-M=M+D      // sum += A[i]
+M=M+D      // sum += A[i]  <-- **Fixed this line**
 
 @R3
 M=M+1      // index++
