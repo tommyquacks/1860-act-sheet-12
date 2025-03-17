@@ -21,20 +21,26 @@ D=D-M
 D;JGE       // If index >= n, exit loop
 
 @R0
-D=M
+D=M        // Base address of array
 @R3
-A=D+M       // Address of A[i]
+A=D+M      // Compute memory address of A[i]
 
-D=M
+D=M       // Load A[i] value
 @R2
-M=M+D       // sum += A[i]
+M=M+D     // sum += A[i]
 
 @R3
-M=M+1       // index++
+M=M+1     // index++
 
 @LOOP
-0;JMP       // Repeat
+0;JMP     // Repeat
+
+(END)
+@END
+0;JMP     // Halt execution
 
 (INVALID)
 @R2
-M=0         // Return 0
+M=0       // Return 0 if n <= 0
+@END
+0;JMP
