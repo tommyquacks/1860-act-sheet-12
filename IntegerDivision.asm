@@ -1,43 +1,38 @@
 // IntegerDivision.asm
 // Computes integer division: x = y * m + q
 
-@R0
-D=M          // D = x
 @R1
-D=D-M        // D = x - y (Check if y > x)
+D=M
 @INVALID
-D;JLT        // If x < y, set invalid flag
+D;JEQ       // If y == 0, division is invalid
 
 @R4
-M=0          // Set valid flag to 0
+M=0         // Set valid flag to 0
 
 @R2
-M=0          // Quotient (m) = 0
-
+M=0         // Quotient (m) = 0
 @R3
-M=R0         // Remainder (q) = x
+M=R0        // Remainder (q) = x
 
 (LOOP)
 @R3
 D=M
 @R1
-D=D-M        // D = remainder - y
+D=D-M
 @END
-D;JLT        // If remainder < y, exit
+D;JLT       // If remainder < y, exit
 
 @R2
-M=M+1        // Increment quotient (m)
-
+M=M+1       // Increment quotient (m)
 @R3
-M=D          // Update remainder (q)
+M=D         // Update remainder (q)
 
 @LOOP
-0;JMP        // Repeat
+0;JMP       // Repeat
 
 (END)
 0;JMP
 
 (INVALID)
 @R4
-M=1          // Set invalid flag
-
+M=1         // Set invalid flag
