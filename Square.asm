@@ -11,7 +11,7 @@ M=0         // Initialize R1 = 0 (y = 0)
 D;JEQ       // If x == 0, exit loop
 
 @R1
-M=M+D       // y = y + x
+M=D+M       // y = y + x
 
 D=D-1       // Decrease counter
 
